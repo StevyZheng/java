@@ -4,9 +4,16 @@ import java.util.ArrayList;
 
 public class LsiMegaRaidController implements Controller {
 	private String model;
+	private String vendor;
 	private String fw;
 	private String sn;
+	private String cacheSize;
 	private ArrayList<String> disks;
+	
+	public LsiMegaRaidController() {
+		// TODO Auto-generated constructor stub
+		setVendor("LSI");
+	}
 
 	@Override
 	public void fillAttrs() {
@@ -28,6 +35,14 @@ public class LsiMegaRaidController implements Controller {
 		this.model = model;
 	}
 
+	public String getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
+
 	public String getFw() {
 		return fw;
 	}
@@ -42,6 +57,14 @@ public class LsiMegaRaidController implements Controller {
 
 	public void setSn(String sn) {
 		this.sn = sn;
+	}
+
+	public String getCacheSize() {
+		return cacheSize;
+	}
+
+	public void setCacheSize(String cacheSize) {
+		this.cacheSize = cacheSize;
 	}
 
 	public ArrayList<String> getDisks() {

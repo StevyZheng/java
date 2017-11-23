@@ -2,6 +2,7 @@ package com.roycom.linux.storage.disk;
 
 public class DiskFromLsiSas2 implements Disk {
 	private String model;
+	private String vendor;
 	private String fw;
 	private String sn;
 	private String smart;
@@ -24,6 +25,14 @@ public class DiskFromLsiSas2 implements Disk {
 
 	public void setModel(String model) {
 		this.model = model;
+	}
+
+	public String getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
 	}
 
 	public String getFw() {

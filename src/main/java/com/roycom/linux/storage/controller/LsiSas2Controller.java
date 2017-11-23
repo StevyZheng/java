@@ -4,9 +4,15 @@ import java.util.ArrayList;
 
 public class LsiSas2Controller implements Controller {
 	private String model;
+	private String vendor;
 	private String fw;
 	private String sn;
 	private ArrayList<String> disks;
+	
+	public LsiSas2Controller() {
+		// TODO Auto-generated constructor stub
+		setVendor("LSI");
+	}
 
 	@Override
 	public void fillAttrs() {
@@ -26,6 +32,14 @@ public class LsiSas2Controller implements Controller {
 
 	public void setModel(String model) {
 		this.model = model;
+	}
+
+	public String getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
 	}
 
 	public String getFw() {
