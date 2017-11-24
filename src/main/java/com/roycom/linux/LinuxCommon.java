@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Common {
+public class LinuxCommon {
 	/**
 	 * exeShell static函数，运行shell命令，返回执行结果
 	 * @param cmd shell命名字符串
@@ -93,6 +93,39 @@ public class Common {
 	}
 	
 	/**
+	 * 获取第一个匹配正则表达式的子串
+	 * @param srcStr 源字符串
+	 * @param regexStr 正则表达式字符串
+	 * @return 返回匹配的子串
+	 */
+	public static String getMatchSubString(String srcStr, String regexStr){
+		Pattern pattern = Pattern.compile(regexStr);
+		Matcher matcher = pattern.matcher(srcStr);
+		if(matcher.find()){
+			return matcher.group(1);
+		}else{
+			return null;
+		}
+	}
+	
+	/**
+	 * 按行匹配，获取每行的第一个匹配正则表达式的子串
+	 * @param srcStr 源字符串
+	 * @param regexStr 正则表达式字符串
+	 * @return 返回每行的第一个匹配正则表达式的子串
+	 */
+	public static ArrayList<String> getMatchSubStrings(String srcStr, String regexStr){
+		ArrayList<String> subStrs = new ArrayList<String>();
+		Pattern pattern = Pattern.compile(regexStr, Pattern.MULTILINE);
+		Matcher matcher = pattern.matcher(srcStr);
+		while(matcher.find()){
+			String tmp = matcher.group().trim();
+			subStrs.add(tmp);
+		}
+		return subStrs;
+	}
+	
+	/**
 	 * 静态函数，字符串secStr是否包含正则表达式regStr所涵盖的字串
 	 * @param srcStr 源字符串
 	 * @param regStr 正则字符串，字串
@@ -109,6 +142,10 @@ public class Common {
 		}
 	}
 	
+	public static String RemoveStringBlank(String str){
+		return str.replaceAll(" ", "");
+	}
+	
 	/**
 	 * 检测linux系统中用到的工具是否齐全
 	 * @throws InterruptedException 
@@ -123,9 +160,9 @@ public class Common {
 		for(String tool: tools){
 			cmd = String.format("%s %s", cmd, tool);
 		}
-		String[] re = Common.exeShell(cmd).trim().split("\n");
+		String[] re = LinuxCommon.exeShell(cmd).trim().split("\n");
 		for(String i: re){
-			if(Common.matches(i, " no ")){
+			if(LinuxCommon.matches(i, " no ")){
 				flag = false;
 				result = String.format("%s\n%s",result, i);
 			}
