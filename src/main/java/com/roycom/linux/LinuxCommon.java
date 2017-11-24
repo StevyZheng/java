@@ -11,6 +11,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LinuxCommon {
+	public static void print(String msg){
+		System.out.print(msg);
+	}
+	public static void println(String msg){
+		System.out.println(msg);
+	}
 	/**
 	 * exeShell static函数，运行shell命令，返回执行结果
 	 * @param cmd shell命名字符串

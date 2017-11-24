@@ -7,6 +7,11 @@ public class DiskFromLsiSas3 implements Disk {
 	private String sn;
 	private String smart;
 
+	public DiskFromLsiSas3(String sn) {
+		// TODO Auto-generated constructor stub
+		setSn(sn);
+	}
+	
 	@Override
 	public void fillAttrs() {
 		// TODO Auto-generated method stub

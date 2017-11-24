@@ -2,17 +2,25 @@ package com.roycom.linux.storage.controller;
 
 import java.util.ArrayList;
 
+import com.roycom.linux.storage.disk.Disk;
+
 public class LsiMegaRaidController implements Controller {
 	private String model;
+	private int index;
 	private String vendor;
 	private String fw;
-	private String sn;
 	private String cacheSize;
-	private ArrayList<String> disks;
+	private ArrayList<Disk> disks;
 	
-	public LsiMegaRaidController() {
+	public LsiMegaRaidController(int index, String model) throws Exception {
 		// TODO Auto-generated constructor stub
+		if(model.matches("SAS[0-9]{4}"))
+			setModel(model);
+		else{
+			throw new Exception("LsiMegaRaidController model string is not available.");
+		}
 		setVendor("LSI");
+		setIndex(index);
 	}
 
 	@Override
@@ -27,6 +35,7 @@ public class LsiMegaRaidController implements Controller {
 		return null;
 	}
 
+	@Override
 	public String getModel() {
 		return model;
 	}
@@ -35,6 +44,7 @@ public class LsiMegaRaidController implements Controller {
 		this.model = model;
 	}
 
+	@Override
 	public String getVendor() {
 		return vendor;
 	}
@@ -43,20 +53,13 @@ public class LsiMegaRaidController implements Controller {
 		this.vendor = vendor;
 	}
 
+	@Override
 	public String getFw() {
 		return fw;
 	}
 
 	public void setFw(String fw) {
 		this.fw = fw;
-	}
-
-	public String getSn() {
-		return sn;
-	}
-
-	public void setSn(String sn) {
-		this.sn = sn;
 	}
 
 	public String getCacheSize() {
@@ -67,12 +70,22 @@ public class LsiMegaRaidController implements Controller {
 		this.cacheSize = cacheSize;
 	}
 
-	public ArrayList<String> getDisks() {
+	@Override
+	public ArrayList<Disk> getDisks() {
 		return disks;
 	}
 
-	public void setDisks(ArrayList<String> disks) {
+	public void setDisks(ArrayList<Disk> disks) {
 		this.disks = disks;
+	}
+
+	@Override
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 }
