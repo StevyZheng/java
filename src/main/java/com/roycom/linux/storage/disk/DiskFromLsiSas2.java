@@ -5,7 +5,13 @@ public class DiskFromLsiSas2 implements Disk {
 	private String vendor;
 	private String fw;
 	private String sn;
+	private String devName;
 	private String smart;
+	
+	public DiskFromLsiSas2(String sn) {
+		// TODO Auto-generated constructor stub
+		setSn(sn);
+	}
 	
 	@Override
 	public void fillAttrs() {
@@ -57,6 +63,14 @@ public class DiskFromLsiSas2 implements Disk {
 
 	public void setSmart(String smart) {
 		this.smart = smart;
+	}
+
+	public String getDevName() {
+		return devName;
+	}
+
+	public void setDevName(String devName) {
+		this.devName = devName;
 	}
 
 }

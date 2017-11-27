@@ -1,6 +1,6 @@
 package com.roycom.linux.storage.disk;
 
 public interface Disk {
-	void fillAttrs();
+	void fillAttrs() throws Exception;
 	String toJson();
 }

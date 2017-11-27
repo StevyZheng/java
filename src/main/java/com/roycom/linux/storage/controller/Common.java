@@ -43,4 +43,20 @@ public class Common {
 		return cons;
 	}
 	
+	public static ArrayList<ArrayList<String>> scanSystemFromSas23DiskNameAndSn() throws Exception{
+		ArrayList<ArrayList<String>> disks = new ArrayList<ArrayList<String>>();
+		String tmp = LinuxCommon.exeShell("lsblk -o NAME,SERIAL,VENDOR");
+		ArrayList<String> names = LinuxCommon.searchRegexString(tmp, "^sd[a-z]+ +([a-z]|[A-Z]|[0-9]| )+", " ", 0);
+		ArrayList<String> sns = LinuxCommon.searchRegexString(tmp, "^sd[a-z]+ +([a-z]|[A-Z]|[0-9]| )+", " ", 1);
+		ArrayList<String> vendors = LinuxCommon.searchRegexString(tmp, "^sd[a-z]+ +([a-z]|[A-Z]|[0-9]| )+", " ", 2);
+		for(int i=0;i<names.size();i++){
+			ArrayList<String> attr = new ArrayList<String>();
+			attr.add(names.get(i));
+			attr.add(sns.get(i));
+			attr.add(vendors.get(i));
+			disks.add(attr);
+		}
+		return disks;
+	}
+	
 }

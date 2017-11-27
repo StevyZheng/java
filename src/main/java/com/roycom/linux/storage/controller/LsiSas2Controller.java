@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.roycom.linux.LinuxCommon;
 import com.roycom.linux.storage.disk.Disk;
-import com.roycom.linux.storage.disk.DiskFromLsiSas3;
+import com.roycom.linux.storage.disk.DiskFromLsiSas2;
 
 public class LsiSas2Controller implements Controller {
 	private String model;
@@ -38,7 +38,7 @@ public class LsiSas2Controller implements Controller {
 		}
 		ArrayList<String> diskSn = LinuxCommon.searchRegexString(sas2ircuString, "^ +Serial No.*([a-z]|[A-Z]|[0-9])+", ":", 2);
 		for(String s: diskSn){
-			disks.add(new DiskFromLsiSas3(s));
+			disks.add(new DiskFromLsiSas2(s));
 		}
 	}
 

@@ -6,6 +6,10 @@ public class DiskFromLsiMegaRaid implements Disk {
 	private String fw;
 	private String sn;
 	private String smart;
+	
+	public DiskFromLsiMegaRaid() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void fillAttrs() {

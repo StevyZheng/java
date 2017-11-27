@@ -2,7 +2,9 @@ package com.roycom.linux.storage.controller;
 
 import java.util.ArrayList;
 
+import com.roycom.linux.LinuxCommon;
 import com.roycom.linux.storage.disk.Disk;
+import com.roycom.linux.storage.disk.DiskFromLsiSas2;
 
 public class LsiMegaRaidController implements Controller {
 	private String model;
@@ -24,9 +26,21 @@ public class LsiMegaRaidController implements Controller {
 	}
 
 	@Override
-	public void fillAttrs() {
+	public void fillAttrs() throws Exception {
 		// TODO Auto-generated method stub
-
+		String megaRaidString = LinuxCommon.exeShell(String.format("storcli /c%s show", index));
+		String fwStr = LinuxCommon.getMatchSubString(megaRaidString, "FW Version.*([0-9]+(\\.|-))+[0-9]*");
+		String[] tmp = fwStr.split("=");
+		String tmpStr = tmp[1].trim();
+		if(!tmpStr.isEmpty()){
+			setFw(tmpStr);
+		}else{
+			setFw("null");
+		}
+		ArrayList<String> diskSn = LinuxCommon.searchRegexString(megaRaidString, "^ +Serial No.*([a-z]|[A-Z]|[0-9])+", ":", 2);
+		for(String s: diskSn){
+			disks.add(new DiskFromLsiSas2(s));
+		}
 	}
 
 	@Override

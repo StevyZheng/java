@@ -29,6 +29,7 @@ public class LsiSas3Controller implements Controller {
 		// TODO Auto-generated method stub
 		String sas3ircuString = LinuxCommon.exeShell(String.format("sas3ircu %s display", index));
 		String fwStr = LinuxCommon.getMatchSubString(sas3ircuString, "Firmware.*([0-9]+\\.)+[0-9]*");
+		ArrayList<ArrayList<String>> diskNameSns = Common.scanSystemFromSas23DiskNameAndSn();
 		String[] tmp = fwStr.split(":");
 		String tmpStr = tmp[1].trim();
 		if(!tmpStr.isEmpty()){
@@ -36,9 +37,9 @@ public class LsiSas3Controller implements Controller {
 		}else{
 			setFw("null");
 		}
-		ArrayList<String> diskSn = LinuxCommon.searchRegexString(sas3ircuString, "^ +Serial No.*([a-z]|[A-Z]|[0-9])+", ":", 2);
-		for(String s: diskSn){
-			disks.add(new DiskFromLsiSas3(s));
+		for(ArrayList<String> s: diskNameSns){
+			if(s.get(2).matches(".+(ATA|HGST).+"))
+				disks.add(new DiskFromLsiSas3(s.get(1), s.get(0)));
 		}
 	}
 
