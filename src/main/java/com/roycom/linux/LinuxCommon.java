@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.io.FileUtils;
 
 public class LinuxCommon {
 	public static void print(String msg){
@@ -94,6 +95,25 @@ public class LinuxCommon {
 			String tmp = matcher.group().trim();
 			String[] listA = tmp.split(String.format("%s*", splitString));
 			result.add(listA[column].trim());
+		}
+		return result;
+	}
+	
+	/**
+	 * searchRegexStringFromFile static函数，在目标字符串中按行搜索子串。
+	 * @param srcStr 待查找字符串
+	 * @param regexStr 正则字符串
+	 * @return 返回查询后字符串数组。
+	 * @throws IOException 
+	 */
+	public static ArrayList<String> searchRegexStringFromFile(String path, String regexStr) throws IOException{
+		ArrayList<String> result = new ArrayList<String>();
+		String txt = FileUtils.readFileToString(new File(path));
+		Pattern pattern = Pattern.compile(regexStr, Pattern.MULTILINE);
+		Matcher matcher = pattern.matcher(txt);
+		while(matcher.find()){
+			String tmp = matcher.group().trim();
+			result.add(tmp);
 		}
 		return result;
 	}
