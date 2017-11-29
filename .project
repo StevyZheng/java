@@ -30,7 +30,7 @@
 		<link>
 			<name>resources</name>
 			<type>2</type>
-			<location>C:/Users/66455/git/IADS/src/main/java/resources</location>
+			<locationURI>PROJECT_LOC/src/main/java/resources</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
