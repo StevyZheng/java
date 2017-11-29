@@ -19,13 +19,13 @@ public class LinuxCommon {
 		System.out.println(msg);
 	}
 	/**
-	 * exeShell staticº¯Êı£¬ÔËĞĞshellÃüÁî£¬·µ»ØÖ´ĞĞ½á¹û
-	 * @param cmd shellÃüÃû×Ö·û´®
-	 * @return ·µ»ØÖ´ĞĞ½á¹û
-	 * @throws IOException ¿ÉÄÜ³öÏÖµÄIO error
-	 * @throws InterruptedException Òì³£
+	 * exeShell staticå‡½æ•°ï¼Œè¿è¡Œshellå‘½ä»¤ï¼Œè¿”å›æ‰§è¡Œç»“æœ
+	 * @param cmd shellå‘½åå­—ç¬¦ä¸²
+	 * @return è¿”å›æ‰§è¡Œç»“æœ
+	 * @throws IOException å¯èƒ½å‡ºç°çš„IO error
+	 * @throws InterruptedException å¼‚å¸¸
 	 * @throws NullPointerException if an element of the command list is null
-	 * @throws SecurityException È¨ÏŞÒì³£
+	 * @throws SecurityException æƒé™å¼‚å¸¸
 	 */
 	public static String exeShell(String cmd) throws Exception {
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);
@@ -79,13 +79,13 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * searchRegexString staticº¯Êı£¬ÔÚÄ¿±ê×Ö·û´®ÖĞ°´ĞĞËÑË÷×Ó´®ºó£¬·Ö¸îÈ¡ÆäÖĞÒ»ÁĞ¡£
-	 * @param srcStr ´ı²éÕÒ×Ö·û´®
-	 * @param regexStr ÕıÔò×Ö·û´®
-	 * @param splitString ·Ö¸î×Ö·û×Ó´®£¬Ò»°ãÊÇÊ¹ÓÃ" *"À´·Ö¸î¶à¸ö¿Õ¸ñ
-	 * @param column ½«Ê¹ÓÃÕıÔò±í´ïÊ½²éÑ¯ºóµÄ×Ö·û´®·Ö¸îºóµÄµÚcolumnÁĞ¸³Öµ¸øÒ»¸öArrayListµÄ¶ÔÏó
-	 * @return ·µ»Ø²éÑ¯²¢·Ö¸îºóµÚcolumnÁĞµÄ×Ö·û´®Êı×é¡£
-	 * @throws IllegalArgumentException ÕıÔò±í´ïÊ½×Ö·û´®²»ºÏ·¨
+	 * searchRegexString staticå‡½æ•°ï¼Œåœ¨ç›®æ ‡å­—ç¬¦ä¸²ä¸­æŒ‰è¡Œæœç´¢å­ä¸²åï¼Œåˆ†å‰²å–å…¶ä¸­ä¸€åˆ—ã€‚
+	 * @param srcStr å¾…æŸ¥æ‰¾å­—ç¬¦ä¸²
+	 * @param regexStr æ­£åˆ™å­—ç¬¦ä¸²
+	 * @param splitString åˆ†å‰²å­—ç¬¦å­ä¸²ï¼Œä¸€èˆ¬æ˜¯ä½¿ç”¨" *"æ¥åˆ†å‰²å¤šä¸ªç©ºæ ¼
+	 * @param column å°†ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æŸ¥è¯¢åçš„å­—ç¬¦ä¸²åˆ†å‰²åçš„ç¬¬columnåˆ—èµ‹å€¼ç»™ä¸€ä¸ªArrayListçš„å¯¹è±¡
+	 * @return è¿”å›æŸ¥è¯¢å¹¶åˆ†å‰²åç¬¬columnåˆ—çš„å­—ç¬¦ä¸²æ•°ç»„ã€‚
+	 * @throws IllegalArgumentException æ­£åˆ™è¡¨è¾¾å¼å­—ç¬¦ä¸²ä¸åˆæ³•
 	 */
 	public static ArrayList<String> searchRegexString(String srcStr, String regexStr, String splitString, int column) throws IllegalArgumentException {
 		ArrayList<String> result = new ArrayList<String>();
@@ -100,11 +100,11 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * searchRegexStringFromFile staticº¯Êı£¬ÔÚÄ¿±ê×Ö·û´®ÖĞ°´ĞĞËÑË÷×Ó´®¡£
-	 * @param srcStr ´ı²éÕÒ×Ö·û´®
-	 * @param regexStr ÕıÔò×Ö·û´®
-	 * @return ·µ»Ø²éÑ¯ºó×Ö·û´®Êı×é¡£
-	 * @throws IOException 
+	 * searchRegexStringFromFile staticå‡½æ•°ï¼Œåœ¨ç›®æ ‡å­—ç¬¦ä¸²ä¸­æŒ‰è¡Œæœç´¢å­ä¸²ã€‚
+	 * @param path å¾…æŸ¥æ‰¾å­—ç¬¦ä¸²
+	 * @param regexStr æ­£åˆ™å­—ç¬¦ä¸²
+	 * @return è¿”å›æŸ¥è¯¢åå­—ç¬¦ä¸²æ•°ç»„ã€‚
+	 * @throws IOException
 	 */
 	public static ArrayList<String> searchRegexStringFromFile(String path, String regexStr) throws IOException{
 		ArrayList<String> result = new ArrayList<String>();
@@ -119,10 +119,10 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * »ñÈ¡µÚÒ»¸öÆ¥ÅäÕıÔò±í´ïÊ½µÄ×Ó´®
-	 * @param srcStr Ô´×Ö·û´®
-	 * @param regexStr ÕıÔò±í´ïÊ½×Ö·û´®
-	 * @return ·µ»ØÆ¥ÅäµÄ×Ó´®
+	 * è·å–ç¬¬ä¸€ä¸ªåŒ¹é…æ­£åˆ™è¡¨è¾¾å¼çš„å­ä¸²
+	 * @param srcStr æºå­—ç¬¦ä¸²
+	 * @param regexStr æ­£åˆ™è¡¨è¾¾å¼å­—ç¬¦ä¸²
+	 * @return è¿”å›åŒ¹é…çš„å­ä¸²
 	 */
 	public static String getMatchSubString(String srcStr, String regexStr){
 		Pattern pattern = Pattern.compile(regexStr);
@@ -135,10 +135,10 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * °´ĞĞÆ¥Åä£¬»ñÈ¡Ã¿ĞĞµÄµÚÒ»¸öÆ¥ÅäÕıÔò±í´ïÊ½µÄ×Ó´®
-	 * @param srcStr Ô´×Ö·û´®
-	 * @param regexStr ÕıÔò±í´ïÊ½×Ö·û´®
-	 * @return ·µ»ØÃ¿ĞĞµÄµÚÒ»¸öÆ¥ÅäÕıÔò±í´ïÊ½µÄ×Ó´®
+	 * æŒ‰è¡ŒåŒ¹é…ï¼Œè·å–æ¯è¡Œçš„ç¬¬ä¸€ä¸ªåŒ¹é…æ­£åˆ™è¡¨è¾¾å¼çš„å­ä¸²
+	 * @param srcStr æºå­—ç¬¦ä¸²
+	 * @param regexStr æ­£åˆ™è¡¨è¾¾å¼å­—ç¬¦ä¸²
+	 * @return è¿”å›æ¯è¡Œçš„ç¬¬ä¸€ä¸ªåŒ¹é…æ­£åˆ™è¡¨è¾¾å¼çš„å­ä¸²
 	 */
 	public static ArrayList<String> getMatchSubStrings(String srcStr, String regexStr){
 		ArrayList<String> subStrs = new ArrayList<String>();
@@ -152,11 +152,11 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * ¾²Ì¬º¯Êı£¬×Ö·û´®secStrÊÇ·ñ°üº¬ÕıÔò±í´ïÊ½regStrËùº­¸ÇµÄ×Ö´®
-	 * @param srcStr Ô´×Ö·û´®
-	 * @param regStr ÕıÔò×Ö·û´®£¬×Ö´®
-	 * @return ·µ»ØbooleanĞÍ
-	 * @throws IllegalArgumentException ÕıÔò±í´ïÊ½×Ö·û´®²»ºÏ·¨
+	 * é™æ€å‡½æ•°ï¼Œå­—ç¬¦ä¸²secStræ˜¯å¦åŒ…å«æ­£åˆ™è¡¨è¾¾å¼regStræ‰€æ¶µç›–çš„å­—ä¸²
+	 * @param srcStr æºå­—ç¬¦ä¸²
+	 * @param regStr æ­£åˆ™å­—ç¬¦ä¸²ï¼Œå­—ä¸²
+	 * @return è¿”å›booleanå‹
+	 * @throws IllegalArgumentException æ­£åˆ™è¡¨è¾¾å¼å­—ç¬¦ä¸²ä¸åˆæ³•
 	 */
 	public static boolean matches(String srcStr, String regStr) throws IllegalArgumentException{
 		Pattern pattern = Pattern.compile(regStr, Pattern.MULTILINE);
@@ -173,11 +173,11 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * ¼ì²âlinuxÏµÍ³ÖĞÓÃµ½µÄ¹¤¾ßÊÇ·ñÆëÈ«
-	 * @throws InterruptedException 
-	 * @throws IOException 
-	 * @throws SecurityException 
-	 * @throws NullPointerException 
+	 * æ£€æµ‹linuxç³»ç»Ÿä¸­ç”¨åˆ°çš„å·¥å…·æ˜¯å¦é½å…¨
+	 * @throws InterruptedException
+	 * @throws IOException
+	 * @throws SecurityException
+	 * @throws NullPointerException
 	 */
 	public static boolean checkEnvironmentTools(ArrayList<String> tools) throws Exception{
 		String cmd = "which";
@@ -200,12 +200,12 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * staticº¯Êı£¬¶ÁÎÄ¼ş
-	 * @param path ÎÄ¼şÂ·¾¶
-	 * @return ·µ»Ø×Ö·û´®½á¹û
-	 * @throws IOException ³öÏÖIO error»òÕßFileInputStreamÖĞÎÄ¼ş²»´æÔÚ
-	 * @throws NullPointerException File¹¹Ôìº¯ÊıµÄ²ÎÊıpathÎªnull£¬³ö´í
-	 * @throws SecurityException ÏµÍ³´æÔÚ°²È«ÏŞÖÆ£¬Ã»ÓĞ¶ÁÈ¡È¨ÏŞ
+	 * staticå‡½æ•°ï¼Œè¯»æ–‡ä»¶
+	 * @param path æ–‡ä»¶è·¯å¾„
+	 * @return è¿”å›å­—ç¬¦ä¸²ç»“æœ
+	 * @throws IOException å‡ºç°IO erroræˆ–è€…FileInputStreamä¸­æ–‡ä»¶ä¸å­˜åœ¨
+	 * @throws NullPointerException Fileæ„é€ å‡½æ•°çš„å‚æ•°pathä¸ºnullï¼Œå‡ºé”™
+	 * @throws SecurityException ç³»ç»Ÿå­˜åœ¨å®‰å…¨é™åˆ¶ï¼Œæ²¡æœ‰è¯»å–æƒé™
 	 */
 	public static String readFileByChar(String path) throws Exception{
 		String buf = null;
@@ -226,10 +226,10 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * staticº¯Êı£¬±éÀú¸ùÎÄ¼ş¼ĞËùÓĞÎÄ¼ş
-	 * @param path ÎÄ¼ş¼ĞÂ·¾¶
-	 * @return ·µ»ØArrayListÀàĞÍ¸ùÎÄ¼ş¼ĞÄÚÈÎËùÓĞÎÄ¼ş
-	 * @throws SecurityException listFilesº¯ÊıÃ»ÓĞ¶ÁÈ¡È¨ÏŞ£¬´æÔÚ°²È«ÏŞÖÆ
+	 * staticå‡½æ•°ï¼Œéå†æ ¹æ–‡ä»¶å¤¹æ‰€æœ‰æ–‡ä»¶
+	 * @param path æ–‡ä»¶å¤¹è·¯å¾„
+	 * @return è¿”å›ArrayListç±»å‹æ ¹æ–‡ä»¶å¤¹å†…ä»»æ‰€æœ‰æ–‡ä»¶
+	 * @throws SecurityException listFileså‡½æ•°æ²¡æœ‰è¯»å–æƒé™ï¼Œå­˜åœ¨å®‰å…¨é™åˆ¶
 	 */
 	public static ArrayList<String> listDirAllFiles(String path) throws SecurityException{
 		ArrayList<String> fileList = new ArrayList<String>();
@@ -241,10 +241,10 @@ public class LinuxCommon {
 	}
 	
 	/**
-	 * staticº¯Êı£¬±éÀú¸ùÎÄ¼ş¼Ğ³ıÄ¿Â¼ÍâµÄËùÓĞÎÄ¼ş
-	 * @param path ÎÄ¼ş¼ĞÂ·¾¶
-	 * @return ·µ»ØArrayListÀàĞÍ¸ùÎÄ¼ş¼ĞÄÚÈÎËùÓĞ·ÇÄ¿Â¼ÎÄ¼ş
-	 * @throws SecurityException listFiles»òisDirectoryº¯ÊıÃ»ÓĞ¶ÁÈ¡È¨ÏŞ£¬´æÔÚ°²È«ÏŞÖÆ
+	 * staticå‡½æ•°ï¼Œéå†æ ¹æ–‡ä»¶å¤¹é™¤ç›®å½•å¤–çš„æ‰€æœ‰æ–‡ä»¶
+	 * @param path æ–‡ä»¶å¤¹è·¯å¾„
+	 * @return è¿”å›ArrayListç±»å‹æ ¹æ–‡ä»¶å¤¹å†…ä»»æ‰€æœ‰éç›®å½•æ–‡ä»¶
+	 * @throws SecurityException listFilesæˆ–isDirectoryå‡½æ•°æ²¡æœ‰è¯»å–æƒé™ï¼Œå­˜åœ¨å®‰å…¨é™åˆ¶
 	 */
 	public static ArrayList<String> listDirNomalFiles(String path) throws SecurityException{
 		ArrayList<String> fileList = new ArrayList<String>();

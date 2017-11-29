@@ -23,6 +23,7 @@ public class DiskFromLsiSas3 implements Disk {
 		setSmart(smartStr);
 		fw = LinuxCommon.searchRegexString(smart, "^(Firmware|Revision).+", ":", 1).get(0).trim();
 		vendor = LinuxCommon.searchRegexString(smart, "^(ATA|Vendor).+", ":", 1).get(0).trim();
+		sn = LinuxCommon.searchRegexString(smartStr, "^Serial (N|n)umber.+", ":", 1).get(0).trim();
 	}
 
 	@Override
